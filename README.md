@@ -44,3 +44,14 @@ KiboMibo Platform repository
 
 ## Как проверить работоспособность:
  - Запустить комманду kubectl describe po $(kubectl get pods -l app=frontend -o=jsonpath='{.items[0].metadata.name}')
+ - Запустить комманду kubectl describe deployment/paymentservice
+
+
+# Выполнено ДЗ №3
+
+ - [x] Основное ДЗ
+
+## В процессе сделано:
+ - проделаны все операции по инструкциям
+
+## Как запустить проект:
