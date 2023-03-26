@@ -3,8 +3,10 @@ kind: ClusterRoleBinding
 metadata:
   name: prometheus:pod-view
 subjects:
-  - kind: Namespace
-    name: prometheus
+  - kind: User
+    name: '*'
+    namespace: prometheus
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
