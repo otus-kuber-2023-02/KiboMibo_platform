@@ -1,0 +1,9 @@
+resources:
+- ../base
+transformers:
+- setNamespace.yaml
+
+namePrefix: prod-
+
+commonLabels:
+  app: prod-emailservice

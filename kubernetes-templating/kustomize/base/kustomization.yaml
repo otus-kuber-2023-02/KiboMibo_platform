@@ -1,0 +1,3 @@
+resources:
+- emailservice-deployment.yaml
+- emailservice-service.yaml
