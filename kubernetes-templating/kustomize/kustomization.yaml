@@ -1,0 +1,7 @@
+resources:
+- dev
+- prod
+
+commonLabels:
+  app: emailservice
+

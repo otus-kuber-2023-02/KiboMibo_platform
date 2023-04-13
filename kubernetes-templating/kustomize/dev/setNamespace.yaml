@@ -1,0 +1,8 @@
+apiVersion: builtin
+kind: ValueAddTransformer
+metadata:
+  name: setNamespace
+
+targets:
+  - fieldPath: metadata/namespace
+    value: hipster-shop

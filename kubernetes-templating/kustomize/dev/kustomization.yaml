@@ -1,0 +1,9 @@
+resources:
+- ../base
+transformers:
+- setNamespace.yaml
+
+namePrefix: dev-
+
+commonLabels:
+  app: dev-emailservice
