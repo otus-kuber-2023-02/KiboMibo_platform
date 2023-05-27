@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tmp-pod
+spec:
+  serviceAccountName: vault-auth
+  containers:
+    - image: alpine:3.17
+      name: tmp-container
+      command: ["sh", "-c", "while true"]
