@@ -12,24 +12,26 @@ masterService: ""
 roles:
   - master
   - data
-  - data_content
-  - data_hot
-  - data_warm
-  - data_cold
+  # - data_content
+  # - data_hot
+  # - data_warm
+  # - data_cold
   - ingest
-  - ml
-  - remote_cluster_client
-  - transform
+  # - ml
+  # - remote_cluster_client
+  # - transform
 
-replicas: 3
-minimumMasterNodes: 2
+replicas: 1
+minimumMasterNodes: 1
 
 esMajorVersion: ""
 
 # Allows you to add any config files in /usr/share/elasticsearch/config/
 # such as elasticsearch.yml and log4j2.properties
-esConfig: {}
-#  elasticsearch.yml: |
+esConfig: {} 
+ # elasticsearch.yml: |
+ #   xpack.security.http.ssl:
+ #    enabled: false
 #    key:
 #      nestedkey: value
 #  log4j2.properties: |
@@ -89,8 +91,8 @@ esJavaOpts: "" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
-    cpu: "1000m"
-    memory: "2Gi"
+    cpu: "100m"
+    memory: "200Mi"
   limits:
     cpu: "1000m"
     memory: "2Gi"
@@ -185,7 +187,7 @@ podManagementPolicy: "Parallel"
 # The environment variables injected by service links are not used, but can lead to slow Elasticsearch boot times when
 # there are many services in the current namespace.
 # If you experience slow pod startups you probably want to set this to `false`.
-enableServiceLinks: true
+enableServiceLinks: false
 
 protocol: https
 httpPort: 9200
@@ -198,7 +200,7 @@ service:
   type: ClusterIP
   # Consider that all endpoints are considered "ready" even if the Pods themselves are not
   # https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
-  publishNotReadyAddresses: false
+  publishNotReadyAddresses: true
   nodePort: ""
   annotations: {}
   httpPortName: http
@@ -247,13 +249,13 @@ clusterHealthCheckParams: "wait_for_status=green&timeout=1s"
 schedulerName: ""
 
 imagePullSecrets: []
-nodeSelector: 
-  cloud.google.com/gke-nodepool: infra-pool
-tolerations: 
-  - key: node-role
-    operator: Equal
-    value: infra
-    effect: NoSchedule
+# nodeSelector: 
+#   cloud.google.com/gke-nodepool: infra-pool
+# tolerations: 
+#   - key: node-role
+#     operator: Equal
+#     value: infra
+#     effect: NoSchedule
 
 # Enabling this will publicly expose your Elasticsearch instance.
 # Only enable this if you have security enabled on your cluster
@@ -358,4 +360,4 @@ networkPolicy:
     #             - frontend
 
 tests:
-  enabled: true
+  enabled: false
